@@ -1,5 +1,2 @@
+Pepper
 Tomato
-Cucumber
-Onion
-Avocado
-Garlic
