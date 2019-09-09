@@ -4,10 +4,10 @@ from datetime import datetime as dt
 hosts_temp = "hosts"
 hosts_path= "/etc/hosts"
 redirects = "127.0.0.1"
-website_lists = ["www.facebook.com", "facebok.com", "www.youtube.com"]
+website_lists = ["www.facebook.com", "facebok.com", "www.youtube.com" , "www.twitter.com"]
 
 while True:
-    if dt(dt.now().year, dt.now().month, dt.now().day, 8) < dt.now() < dt(dt.now().year, dt.now().month, dt.now().day, 20):
+    if dt(dt.now().year, dt.now().month, dt.now().day, 7) < dt.now() < dt(dt.now().year, dt.now().month, dt.now().day, 20):
         print("Working hours...")
         with open(hosts_path, "r+") as file:
             content = file.read()
