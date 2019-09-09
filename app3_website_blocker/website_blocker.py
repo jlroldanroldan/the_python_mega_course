@@ -2,14 +2,14 @@ import time
 from datetime import datetime as dt
 
 hosts_temp = "hosts"
-hosts_path = "\etc\hosts"
+hosts_path= "/etc/hosts"
 redirects = "127.0.0.1"
 website_lists = ["www.facebook.com", "facebok.com", "www.youtube.com"]
 
 while True:
-    if dt(dt.now().year, dt.now().month, dt.now().day, 8) < dt.now() < dt(dt.now().year, dt.now().month, dt.now().day, 16):
+    if dt(dt.now().year, dt.now().month, dt.now().day, 8) < dt.now() < dt(dt.now().year, dt.now().month, dt.now().day, 20):
         print("Working hours...")
-        with open(hosts_temp, "r+") as file:
+        with open(hosts_path, "r+") as file:
             content = file.read()
             print(content)
             for website in website_lists:
@@ -18,6 +18,16 @@ while True:
                 else:
                     file.write(redirects + " " + website + "\n")
     else:
+        with open(hosts_path, "r+")  as file:
+            content = file.readlines()
+            file.seek(0)
+
+            for line in content:
+                if not any(website in line for website in website_lists):
+                    file.write(line)
+            
+            file.truncate()
+            
         print("Fun hours...")
 
     time.sleep(5)
